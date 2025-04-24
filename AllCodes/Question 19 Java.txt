@@ -1,0 +1,30 @@
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.os.Bundle;
+import android.provider.MediaStore;
+import android.view.View;
+import android.widget.ImageView;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class CameraDemo extends AppCompatActivity {
+    ImageView img;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_camera_demo);
+        img=findViewById(R.id.img);
+    }
+
+    public void clickPhoto(View v){
+        Intent i = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        startActivityForResult(i,1);
+    }
+
+    protected void onActivityResult(int reqCode, int resCode, Intent data){
+        super.onActivityResult(reqCode, resCode, data);
+        if (reqCode==1 && resCode==RESULT_OK){
+            Bitmap photo=(Bitmap)data.getExtras().get("data");
+            img.setImageBitmap(photo);
+        }
+    }
+}

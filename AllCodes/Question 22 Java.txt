@@ -1,0 +1,56 @@
+import android.os.Bundle;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class AnimationDemo extends AppCompatActivity
+{
+    ImageView Cartoon;
+    @Override
+    protected void onCreate(Bundle savedInstanceState)
+    {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_animation_demo);
+
+        Cartoon=findViewById(R.id.img);
+    }
+
+    public void zIn(View view)
+    {
+        Animation zin= AnimationUtils.loadAnimation(this,R.anim.zoomin);
+        Cartoon.startAnimation(zin);
+    }
+
+    public void zOut(View view)
+    {
+        Animation zout= AnimationUtils.loadAnimation(this,R.anim.zoomout);
+        Cartoon.startAnimation(zout);
+    }
+
+
+    public void clock(View view)
+    {
+       Animation obj=AnimationUtils.loadAnimation(this,R.anim.clock);
+       Cartoon.startAnimation(obj);
+    }
+
+    public void antiClock(View view)
+    {
+        Animation obj=AnimationUtils.loadAnimation(this,R.anim.anticlock);
+        Cartoon.startAnimation(obj);
+    }
+
+    public void visible(View view)
+    {
+        Animation obj=AnimationUtils.loadAnimation(this,R.anim.visible);
+        Cartoon.startAnimation(obj);
+    }
+
+    public void inVisible(View view)
+    {
+        Animation obj=AnimationUtils.loadAnimation(this,R.anim.invisible);
+        Cartoon.startAnimation(obj);
+    }
+}

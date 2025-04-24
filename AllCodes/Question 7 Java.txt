@@ -1,0 +1,17 @@
+import android.os.Bundle;
+import android.widget.ProgressBar;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class ProgressDemo extends AppCompatActivity {
+    ProgressBar pgb;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_progress_demo);
+        pgb = findViewById(R.id.pgb);
+
+        for (int i = 1; i <= 100; i++) {
+            pgb.setProgress(i);
+        }
+    }
+}

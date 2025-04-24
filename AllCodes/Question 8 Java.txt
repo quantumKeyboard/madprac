@@ -1,0 +1,46 @@
+import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class ListViewToast extends AppCompatActivity {
+
+    String[] subjects = {
+            "MAD", "PWP", "NIS", "EDE", "ETI", "CPP"
+    };
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_list_view_toast);
+
+        // Initialize ListView
+        ListView listView = findViewById(R.id.listView);
+
+        // Create an ArrayAdapter to bind data to the ListView
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(
+                this,
+                android.R.layout.simple_list_item_1,
+                subjects
+        );
+
+        // Set the adapter to the ListView
+        listView.setAdapter(adapter);
+
+        // Set click listener on ListView items
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                // Get the selected item
+                String selectedItem = subjects[position];
+
+                // Display toast with selected item's text
+                Toast.makeText(getApplicationContext(), selectedItem, Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+}

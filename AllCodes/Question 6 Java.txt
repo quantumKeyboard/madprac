@@ -1,0 +1,35 @@
+import android.os.Bundle;
+import android.view.View;
+import android.widget.RadioButton;
+import android.widget.Toast;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class RadioDemo extends AppCompatActivity {
+    RadioButton piz, burg, m, fm;
+    StringBuilder str = new StringBuilder("Selected Items: ");
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_radio_demo);
+        piz=findViewById(R.id.piz);
+        burg=findViewById(R.id.burg);
+        m=findViewById(R.id.m);
+        fm=findViewById(R.id.fm);
+    }
+    public void showSelected(View v){
+        if (piz.isChecked()){
+            str.append("Pizza\n");
+        }
+        if (burg.isChecked()){
+            str.append("Burger\n");
+        }
+        if (m.isChecked()){
+            str.append("Male");
+        }
+        if (fm.isChecked()){
+            str.append("Female");
+        }
+        Toast.makeText(this, str.toString(), Toast.LENGTH_LONG).show();
+    }
+}

@@ -1,0 +1,29 @@
+import android.hardware.Sensor;
+import android.hardware.SensorManager;
+import android.os.Bundle;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class SensorListDemo extends AppCompatActivity {
+    ListView lvw;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_sensor_list_demo);
+        lvw=findViewById(R.id.lvw);
+
+        SensorManager smw = (SensorManager) getSystemService(SENSOR_SERVICE);
+        List<Sensor> sl = smw.getSensorList(Sensor.TYPE_ALL);
+
+        ArrayList<String> names = new ArrayList<>();
+        for (Sensor s:sl){
+            names.add(s.getName());
+        }
+        ArrayAdapter adpt = new ArrayAdapter(this, android.R.layout.simple_list_item_1, names);
+        lvw.setAdapter(adpt);
+    }
+}

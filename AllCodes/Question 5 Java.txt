@@ -1,0 +1,40 @@
+import android.os.Bundle;
+import android.view.View;
+import android.widget.CheckBox;
+import android.widget.Toast;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class CheckBoxDemo extends AppCompatActivity {
+    CheckBox cb1,cb2,cb3,cb4,cb5;
+    StringBuilder str=new StringBuilder("Selected Flowers: ");
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_check_box_demo);
+        cb1=findViewById(R.id.cb1);
+        cb2=findViewById(R.id.cb2);
+        cb3=findViewById(R.id.cb3);
+        cb4=findViewById(R.id.cb4);
+        cb5=findViewById(R.id.cb5);
+    }
+
+    public void orderFlowers(View v){
+        if (cb1.isChecked()){
+            str.append("Rose\n");
+        }
+        if (cb2.isChecked()){
+            str.append("Lotus\n");
+        }
+        if (cb3.isChecked()){
+            str.append("Sunflower\n");
+        }
+        if (cb4.isChecked()){
+            str.append("Lily\n");
+        }
+        if (cb5.isChecked()){
+            str.append("Tulip\n");
+        }
+        Toast.makeText(this, str.toString(), Toast.LENGTH_LONG).show();
+    }
+}

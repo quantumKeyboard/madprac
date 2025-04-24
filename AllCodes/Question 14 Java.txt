@@ -1,0 +1,28 @@
+package com.band.backendpracs;
+
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
+
+import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
+
+public class PhoneDialer extends AppCompatActivity {
+    EditText d1;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_phone_dialer);
+        d1=findViewById(R.id.d1);
+    }
+
+    public void openDialer(View v){
+        Intent i = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+d1.getText().toString()));
+        startActivity(i);
+    }
+}

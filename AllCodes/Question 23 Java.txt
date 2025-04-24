@@ -1,0 +1,60 @@
+
+import android.database.Cursor;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class DatabaseDemo extends AppCompatActivity {
+    EditText rno, sname;
+    DBHelper Db;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_database_demo);
+        rno = findViewById(R.id.rno);
+        sname=findViewById(R.id.sname);
+        Db=new DBHelper(this);
+    }
+    String roll = rno.getText().toString();
+    String name=sname.getText().toString();
+
+    public void insertData(View v){
+        Db.insertStudentData(roll, name);
+        Toast.makeText(getApplicationContext(), "Data Inserted Successfully", Toast.LENGTH_LONG).show();
+    }
+
+    public void updateData(View v){
+        Db.updateStudentData(roll, name);
+        Toast.makeText(getApplicationContext(), "Data Updated Successfully", Toast.LENGTH_LONG).show();
+    }
+
+    public void deleteData(View v){
+        Db.deleteStudentData(roll);
+        Toast.makeText(getApplicationContext(), "Data Deleted Successfully", Toast.LENGTH_LONG).show();
+    }
+
+    public void displayData(View v){
+        Cursor c = Db.getStudentData();
+        if (c.getCount()==0){
+            Toast.makeText(getApplicationContext(), "No Entry Exists", Toast.LENGTH_LONG).show();
+            return;
+        }
+        StringBuilder str = new StringBuilder();
+        while (c.moveToNext()){
+            str.append("Roll number: "+c.getString(0)+"\n");
+            str.append("Student Name: "+c.getString(1)+"\n");
+        }
+
+        AlertDialog.Builder build = new AlertDialog.Builder(DatabaseDemo.this);
+        build.setCancelable(true);
+        build.setTitle("Student Data");
+        build.setMessage(str.toString());
+        build.show();
+    }
+}

@@ -1,0 +1,51 @@
+
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+
+public class DBHelper extends SQLiteOpenHelper {
+
+    public DBHelper (Context context){
+        super(context, "StudentDatabase.db", null, 1);
+    }
+
+    public void onCreate(SQLiteDatabase Db){
+        Db.execSQL("CREATE TABLE Students(Roll TEXT PRIMARY KEY, Name TEXT)");
+    }
+
+    public void onUpgrade (SQLiteDatabase Db, int i,int i1){
+        Db.execSQL("DROP TABLE IF EXISTS Students");
+    }
+
+    public void insertStudentData(String rno, String sname){
+        SQLiteDatabase Db;
+        ContentValues cv = new ContentValues();
+        Db=this.getWritableDatabase();
+        cv.put("Roll", rno);
+        cv.put("Name", sname);
+    }
+
+    public void updateStudentData(String rno, String sname){
+        SQLiteDatabase Db;
+        ContentValues cv = new ContentValues();
+        Db=this.getWritableDatabase();
+        cv.put("Roll", rno);
+        cv.put("Name", sname);
+        Db.update("Students", cv, "Roll=?", new String[]{rno});
+    }
+
+    public void deleteStudentData(String rno){
+        SQLiteDatabase Db;
+        Db=this.getWritableDatabase();
+        Db.delete("Students", "Roll=?", new String[]{rno});
+    }
+
+    public Cursor getStudentData(){
+        SQLiteDatabase Db;
+        Db=this.getWritableDatabase();
+        Cursor c = Db.rawQuery("SELECT * FROM Students", null);
+        return c;
+    }
+}
