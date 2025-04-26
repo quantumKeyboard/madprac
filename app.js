@@ -79,14 +79,44 @@ function createQuestionCards() {
         const card = document.createElement('div');
         card.className = 'question-card';
         
+        let buttonHtml = '';
+        
+        // Special case for Question 15
+        if (questionNumber === 15) {
+            buttonHtml = `
+                ${codeContent[questionNumber].Java1 ? 
+                    `<button class="code-button" onclick="copyCode(${questionNumber}, 'Java1')">Java 1</button>` : ''}
+                ${codeContent[questionNumber].Java2 ? 
+                    `<button class="code-button" onclick="copyCode(${questionNumber}, 'Java2')">Java 2</button>` : ''}
+                ${codeContent[questionNumber].XML1 ? 
+                    `<button class="code-button" onclick="copyCode(${questionNumber}, 'XML1')">XML 1</button>` : ''}
+                ${codeContent[questionNumber].XML2 ? 
+                    `<button class="code-button" onclick="copyCode(${questionNumber}, 'XML2')">XML 2</button>` : ''}
+            `;
+        } else {
+            buttonHtml = `
+                ${codeContent[questionNumber].Java ? 
+                    `<button class="code-button" onclick="copyCode(${questionNumber}, 'Java')">Java</button>` : ''}
+                ${codeContent[questionNumber].XML ? 
+                    `<button class="code-button" onclick="copyCode(${questionNumber}, 'XML')">XML</button>` : ''}
+                ${codeContent[questionNumber].Permissions ? 
+                    `<button class="code-button" onclick="copyCode(${questionNumber}, 'Permissions')">Permissions</button>` : ''}
+                ${questionNumber === 16 ? 
+                    `<button class="code-button" onclick="copyCode(${questionNumber}, 'Service')">Service</button>` : ''}
+                ${questionNumber === 22 ? 
+                    `<button class="code-button" onclick="copyCode(${questionNumber}, 'Animations')">Animations</button>` : ''}
+                ${questionNumber === 23 ? 
+                    `<button class="code-button" onclick="copyCode(${questionNumber}, 'DBHelper')">DBHelper</button>` : ''}
+                ${questionNumber === 24 ? 
+                    `<button class="code-button" onclick="copyCode(${questionNumber}, 'SMSReceiver')">SMSReceiver</button>` : ''}
+            `;
+        }
+        
         card.innerHTML = `
             <div class="question-number">Question ${questionNumber}</div>
             <div class="question-text">${question}</div>
             <div class="code-buttons">
-                <button class="code-button" onclick="copyCode(${questionNumber}, 'Java')">Java</button>
-                <button class="code-button" onclick="copyCode(${questionNumber}, 'XML')">XML</button>
-                ${questionNumber === 16 || questionNumber === 19 || questionNumber === 20 || questionNumber === 21 || questionNumber === 24 ? 
-                    `<button class="code-button" onclick="copyCode(${questionNumber}, 'Permissions')">Permissions</button>` : ''}
+                ${buttonHtml}
             </div>
         `;
         

@@ -29,73 +29,135 @@ const codeContent = {
     "2": {
         "XML": `<?xml version="1.0" encoding="utf-8"?>
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:stretchColumns="*">
+    android:layout_marginTop="100dp"
+    tools:context=".TableDemoStudents">
 
     <TableRow
-        android:background="#000000"
-        android:padding="5dp">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Roll No."
+            android:layout_marginRight="20dp"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Name"
-            android:textColor="#FFFFFF" />
+            android:layout_marginRight="90dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Percentage"/>
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Age"
-            android:textColor="#FFFFFF" />
+            android:text="1."
+            android:layout_marginRight="20dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Vivek"
+            android:layout_marginRight="90dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="90%"/>
+
+    </TableRow>
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Gender"
-            android:textColor="#FFFFFF" />
+            android:text="2."
+            android:layout_marginRight="20dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Durgesh"
+            android:layout_marginRight="90dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="92%"/>
+
+    </TableRow>
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Course"
-            android:textColor="#FFFFFF" />
+            android:text="3"
+            android:layout_marginRight="20dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Shreyas"
+            android:layout_marginRight="90dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="87%"/>
+
+    </TableRow>
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4"
+            android:layout_marginRight="20dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mandar"
+            android:layout_marginRight="90dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="80%"/>
+
+    </TableRow>
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="5"
+            android:layout_marginRight="20dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Smit"
+            android:layout_marginRight="90dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="94%"/>
     </TableRow>
 
-    <TableRow android:padding="5dp">
-        <TextView android:text="John" />
-        <TextView android:text="20" />
-        <TextView android:text="Male" />
-        <TextView android:text="BCA" />
-    </TableRow>
-
-    <TableRow android:padding="5dp">
-        <TextView android:text="Sarah" />
-        <TextView android:text="21" />
-        <TextView android:text="Female" />
-        <TextView android:text="MCA" />
-    </TableRow>
-
-    <TableRow android:padding="5dp">
-        <TextView android:text="Mike" />
-        <TextView android:text="19" />
-        <TextView android:text="Male" />
-        <TextView android:text="BSc" />
-    </TableRow>
-
-    <TableRow android:padding="5dp">
-        <TextView android:text="Emily" />
-        <TextView android:text="22" />
-        <TextView android:text="Female" />
-        <TextView android:text="MSc" />
-    </TableRow>
-
-    <TableRow android:padding="5dp">
-        <TextView android:text="David" />
-        <TextView android:text="20" />
-        <TextView android:text="Male" />
-        <TextView android:text="BCA" />
-    </TableRow>
 </TableLayout>`
     },
     // Question 3
@@ -544,9 +606,7 @@ public class VerticalScrollDemo extends AppCompatActivity {
     },
     // Question 11
     "11": {
-        "Java": `package com.example.prelimprac;
-
-import android.app.DatePickerDialog;
+        "Java": `import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.widget.Button;
@@ -555,6 +615,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.Calendar;
 
 public class DateTimeSelect extends AppCompatActivity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -585,47 +646,37 @@ public class DateTimeSelect extends AppCompatActivity {
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="100dp"
+    android:orientation="vertical"
+    android:gravity="center"
     tools:context=".DateTimeSelect">
+
     <Button
         android:id="@+id/btnSelectDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Select Date"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp" />
+        android:layout_marginBottom="16dp"/>
 
     <Button
         android:id="@+id/btnSelectTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Select Time"
-        app:layout_constraintTop_toBottomOf="@id/btnSelectDate"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp" />
+        android:layout_marginBottom="16dp"/>
 
     <TextView
         android:id="@+id/tvDateTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Selected Date and Time will appear here"
-        app:layout_constraintTop_toBottomOf="@id/btnSelectTime"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp" />
+        android:textSize="18sp"/>
+
 </LinearLayout>`
     },
     // Question 12
     "12": {
-        "Java": `package com.band.backendpracs;
-
-import android.os.Bundle;
+        "Java": `import android.os.Bundle;
 import android.util.Log;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -804,6 +855,7 @@ public class PhoneDialer extends AppCompatActivity {
         "Java1": `import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class FactorialImplicit extends AppCompatActivity {
@@ -844,32 +896,32 @@ public class FactorialImplicitView extends AppCompatActivity {
         for (int i=1;i<=n;i++){
             fact=fact*i;
         }
-
-        vt.setText(""+fact);
+        vt.setText("Factorial of "+n+" is "+fact);
     }
 }`,
         "XML1": `<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginTop="80dp"
     tools:context=".FactorialImplicit">
 
     <EditText
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:hint="Enter Number"
         android:id="@+id/fe1"
-        android:hint="Enter Your Number"/>
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Calculate Factorial"
         android:onClick="calcFact"
-        android:layout_below="@id/fe1"
+        android:layout_centerHorizontal="true"
         android:layout_centerInParent="true"/>
 
 </RelativeLayout>`,
@@ -877,22 +929,16 @@ public class FactorialImplicitView extends AppCompatActivity {
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="80dp"
     android:orientation="vertical"
+    android:gravity="center"
     tools:context=".FactorialImplicitView">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Factorial of the number is: "
-        android:textSize="15dp"
-        android:textColor="@color/black"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:textSize="20sp"
         android:id="@+id/vf1"/>
 
 </LinearLayout>`
@@ -934,7 +980,31 @@ public class WifiActivity extends AppCompatActivity {
         android:layout_height="wrap_content"
         android:text="Stop Wifi"
         android:onClick="stopWifi"/>
-</LinearLayout>`
+</LinearLayout>`,
+        "Permissions": `<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+<uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />`,
+        "Service": `import android.app.Service;
+import android.content.Intent;
+import android.net.wifi.WifiManager;
+import android.os.IBinder;
+import android.widget.Toast;
+
+public class MyService extends Service {
+    public int onStartCommand(Intent i, int flags, int startID){
+        boolean startWifi = i.getBooleanExtra("start", true);
+        WifiManager wfm = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
+
+        if (wfm !=null){
+            wfm.setWifiEnabled(startWifi);
+            Toast.makeText(this, "WiFi Started", Toast.LENGTH_LONG).show();
+        }
+        return START_NOT_STICKY;
+    }
+    @Override
+    public IBinder onBind(Intent intent) {
+        return null;
+    }
+}`
     },
     // Question 17
     "17": {
@@ -1076,7 +1146,13 @@ public class CameraDemo extends AppCompatActivity {
         android:layout_below="@id/img"
         android:layout_centerInParent="true"/>
 
-</RelativeLayout>`
+</RelativeLayout>`,
+        "Permissions": `<uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+
+    <uses-permission
+        android:name="android.permission.CAMERA"/>`
     },
     // Question 20
     "20": {
@@ -1137,7 +1213,9 @@ public class CameraDemo extends AppCompatActivity {
         android:layout_below="@id/vdo"
         android:layout_centerInParent="true"/>
 
-</RelativeLayout>`
+</RelativeLayout>`,
+        "Permissions": `<uses-permission android:name="android.permission.CAMERA" />
+<uses-feature android:name="android.hardware.camera" android:required="true" />`
     },
     // Question 21
     "21": {
@@ -1226,7 +1304,11 @@ public class BluetoothDemo extends AppCompatActivity {
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/myList"/>
-</LinearLayout>`
+</LinearLayout>`,
+        "Permissions": `<uses-permission android:name="android.permission.BLUETOOTH" />
+<uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+<uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+<uses-permission android:name="android.permission.BLUETOOTH_SCAN" />`
     },
     // Question 22
     "22": {
@@ -1245,6 +1327,7 @@ public class AnimationDemo extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_animation_demo);
+
         Cartoon=findViewById(R.id.img);
     }
 
@@ -1260,33 +1343,28 @@ public class AnimationDemo extends AppCompatActivity
         Cartoon.startAnimation(zout);
     }
 
+
     public void clock(View view)
     {
-        Animation obj=AnimationUtils.loadAnimation(this,R.anim.clock);
+       Animation obj=AnimationUtils.loadAnimation(this,R.anim.clock);
+       Cartoon.startAnimation(obj);
+    }
+
+    public void antiClock(View view)
+    {
+        Animation obj=AnimationUtils.loadAnimation(this,R.anim.anticlock);
         Cartoon.startAnimation(obj);
     }
 
-    public void fade(View view)
+    public void fadein(View view)
     {
-        Animation obj=AnimationUtils.loadAnimation(this,R.anim.fade);
+        Animation obj=AnimationUtils.loadAnimation(this,R.anim.visible);
         Cartoon.startAnimation(obj);
     }
 
-    public void blink(View view)
+    public void fadeout(View view)
     {
-        Animation obj=AnimationUtils.loadAnimation(this,R.anim.blink);
-        Cartoon.startAnimation(obj);
-    }
-
-    public void move(View view)
-    {
-        Animation obj=AnimationUtils.loadAnimation(this,R.anim.move);
-        Cartoon.startAnimation(obj);
-    }
-
-    public void slide(View view)
-    {
-        Animation obj=AnimationUtils.loadAnimation(this,R.anim.slide);
+        Animation obj=AnimationUtils.loadAnimation(this,R.anim.invisible);
         Cartoon.startAnimation(obj);
     }
 }`,
@@ -1323,31 +1401,80 @@ public class AnimationDemo extends AppCompatActivity
         android:layout_height="wrap_content"
         android:text="ClockWise"
         android:onClick="clock"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Anti ClockWise"
+        android:onClick="antiClock"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Fade"
-        android:onClick="fade"/>
-
+        android:text="Fade in"
+        android:onClick="fadein"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Blink"
-        android:onClick="blink"/>
+        android:text="Fade out"
+        android:onClick="fade out"/>
+</LinearLayout>`,
+        "Animations": `Clock Animation:
+<?xml version="1.0" encoding="utf-8"?>
+<rotate xmlns:android="http://schemas.android.com/apk/res/android"
+    android:duration="1000"
+    android:fromDegrees="0"
+    android:toDegrees="360"
+    android:pivotY="50%"
+    android:pivotX="50%"
+    />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Move"
-        android:onClick="move"/>
+Anti-Clock Animation:
+<?xml version="1.0" encoding="utf-8"?>
+<rotate xmlns:android="http://schemas.android.com/apk/res/android"
+    android:duration="1000"
+    android:fromDegrees="360"
+    android:toDegrees="0"
+    android:pivotY="50%"
+    android:pivotX="50%"
+    />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Slide"
-        android:onClick="slide"/>
-</LinearLayout>`
+Zoom In Animation:
+<?xml version="1.0" encoding="utf-8"?>
+<scale xmlns:android="http://schemas.android.com/apk/res/android"
+    android:duration="1000"
+    android:fromXScale="0.5"
+    android:toXScale="1.5"
+    android:fromYScale="0.5"
+    android:toYScale="1.5"
+    android:pivotX="50%"
+    android:pivotY="50%"
+    />
+
+Zoom Out Animation:
+<?xml version="1.0" encoding="utf-8"?>
+<scale xmlns:android="http://schemas.android.com/apk/res/android"
+    android:duration="1000"
+    android:fromXScale="1.5"
+    android:toXScale="0.5"
+    android:fromYScale="1.5"
+    android:toYScale="0.5"
+    android:pivotX="50%"
+    android:pivotY="50%"
+    />
+
+Fade In Animation:
+<?xml version="1.0" encoding="utf-8"?>
+<alpha xmlns:android="http://schemas.android.com/apk/res/android"
+    android:duration="1000"
+    android:fromAlpha="0"
+    android:toAlpha="1"/>
+
+Fade Out Animation:
+<?xml version="1.0" encoding="utf-8"?>
+<alpha xmlns:android="http://schemas.android.com/apk/res/android"
+    android:duration="1000"
+    android:fromAlpha="1"
+    android:toAlpha="0"/>`
     },
     // Question 23
     "23": {
@@ -1459,9 +1586,59 @@ public class DatabaseDemo extends AppCompatActivity {
         android:layout_height="wrap_content"
         android:text="View"
         android:onClick="viewData"/>
-</LinearLayout>`
+</LinearLayout>`,
+        "DBHelper": `import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+
+public class DBHelper extends SQLiteOpenHelper {
+
+    public DBHelper (Context context){
+        super(context, "StudentDatabase.db", null, 1);
+    }
+
+    public void onCreate(SQLiteDatabase Db){
+        Db.execSQL("CREATE TABLE Students(Roll TEXT PRIMARY KEY, Name TEXT)");
+    }
+
+    public void onUpgrade (SQLiteDatabase Db, int i,int i1){
+        Db.execSQL("DROP TABLE IF EXISTS Students");
+    }
+
+    public void insertStudentData(String rno, String sname){
+        SQLiteDatabase Db;
+        ContentValues cv = new ContentValues();
+        Db=this.getWritableDatabase();
+        cv.put("Roll", rno);
+        cv.put("Name", sname);
+        Db.insert("Students", null, cv);
+    }
+
+    public void updateStudentData(String rno, String sname){
+        SQLiteDatabase Db;
+        ContentValues cv = new ContentValues();
+        Db=this.getWritableDatabase();
+        cv.put("Roll", rno);
+        cv.put("Name", sname);
+        Db.update("Students", cv, "Roll=?", new String[]{rno});
+    }
+
+    public void deleteStudentData(String rno){
+        SQLiteDatabase Db;
+        Db=this.getWritableDatabase();
+        Db.delete("Students", "Roll=?", new String[]{rno});
+    }
+
+    public Cursor getStudentData(){
+        SQLiteDatabase Db;
+        Db=this.getWritableDatabase();
+        Cursor c = Db.rawQuery("SELECT * FROM Students", null);
+        return c;
+    }
+}`
     },
-    // Question 24
     "24": {
         "Java": `import android.os.Bundle;
 import android.view.View;
@@ -1532,9 +1709,42 @@ public class MainActivity extends AppCompatActivity
         android:layout_height="wrap_content"
         android:id="@+id/b1"
         android:text="click to send message"/>
-</LinearLayout>`
+</LinearLayout>`,
+        "Permissions": `<uses-permission android:name="android.permission.INTERNET" />`,
+        "SMSReceiver": `import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.telephony.SmsMessage;
+import android.widget.Toast;
+
+public class SmsReceiver extends BroadcastReceiver
+{
+    SmsReceiver()
+    {
+    }
+    @Override
+    public void onReceive(Context context, Intent intent)
+    {
+        Bundle bundle = intent.getExtras();
+        if (bundle != null)
+        {
+            //Retrieve the SMS Messages received
+            Object[] sms = (Object[]) bundle.get("pdus");
+
+            //For every SMS message received
+            for (int i=0; i < sms.length; i++)
+            {
+                // Convert Object array
+                SmsMessage smsMessage = SmsMessage.createFromPdu((byte[]) sms[i]);
+                String phone = smsMessage.getOriginatingAddress();
+                String message = smsMessage.getMessageBody().toString();
+                Toast.makeText(context,"Received from"+phone + ": " + message,Toast. LENGTH_SHORT).show();
+            }
+        }
+    }
+}`
     },
-    // Question 25
     "25": {
         "Java": `import android.content.Intent;
 import android.net.Uri;
@@ -1557,7 +1767,7 @@ public class EmailDemo extends AppCompatActivity {
     public void sendMail(View v){
         Intent i = new Intent(Intent.ACTION_SENDTO);
         i.setData(Uri.parse("mailto:"));
-        i.putExtra(Intent.EXTRA_EMAIL, new String[]{et1.getText().toString()});
+        i.putExtra(Intent.EXTRA_EMAIL, et1.getText().toString());
         i.putExtra(Intent.EXTRA_TEXT, et2.getText().toString());
         startActivity(i);
     }
