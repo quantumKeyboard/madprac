@@ -1479,61 +1479,71 @@ Fade Out Animation:
     // Question 23
     "23": {
         "Java": `import android.database.Cursor;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 
-public class DatabaseDemo extends AppCompatActivity {
-    EditText rno, sname;
-    DBHelper Db;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
+public class DatabaseDemo extends AppCompatActivity
+{
+    EditText roll,name;
+    DBHelper DB;
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_database_demo);
-        rno = findViewById(R.id.rno);
-        sname=findViewById(R.id.sname);
-        Db=new DBHelper(this);
+        roll=findViewById(R.id.r);
+        name=findViewById(R.id.n);
+        DB=new DBHelper(this);
     }
-
-    public void insertData(View v){
-        String roll = rno.getText().toString();
-        String name = sname.getText().toString();
-        Db.insertStudentData(roll, name);
-        Toast.makeText(getApplicationContext(), "Data Inserted Successfully", Toast.LENGTH_LONG).show();
+    public void insertData(View view)
+    {
+        String s_roll = roll.getText().toString();
+        String s_name = name.getText().toString();
+        DB.insertStudentData(s_roll,s_name);
+        Toast.makeText(DatabaseDemo.this, "New Entry Inserted",
+                Toast.LENGTH_SHORT).show();
     }
-
-    public void updateData(View v){
-        String roll = rno.getText().toString();
-        String name = sname.getText().toString();
-        Db.updateStudentData(roll, name);
-        Toast.makeText(getApplicationContext(), "Data Updated Successfully", Toast.LENGTH_LONG).show();
+    public void deleteData(View view)
+    {
+        String s_roll = roll.getText().toString();
+        DB.deleteStudentData(s_roll);
+        Toast.makeText(DatabaseDemo.this, "Entry Deleted",
+                Toast.LENGTH_SHORT).show();
     }
-
-    public void deleteData(View v){
-        String roll = rno.getText().toString();
-        Db.deleteStudentData(roll);
-        Toast.makeText(getApplicationContext(), "Data Deleted Successfully", Toast.LENGTH_LONG).show();
+    public void updateData(View view)
+    {
+        String s_roll = roll.getText().toString();
+        String s_name = name.getText().toString();
+        DB.updateStudentData(s_roll,s_name);
+        Toast.makeText(DatabaseDemo.this, " Entry Updated",
+                Toast.LENGTH_SHORT).show();
     }
-
-    public void viewData(View v){
-        Cursor res = Db.getStudentData();
-        if(res.getCount()==0){
-            Toast.makeText(getApplicationContext(), "No Data Found", Toast.LENGTH_LONG).show();
+    public void displayData(View view)
+    {
+        Cursor res = DB.getStudentData();
+        if (res.getCount()==0)
+        {
+            Toast.makeText(DatabaseDemo.this, "No Entry Exists",
+                    Toast.LENGTH_SHORT).show();
             return;
         }
-        StringBuffer buffer = new StringBuffer();
-        while(res.moveToNext()){
-            buffer.append("Roll No: "+res.getString(0)+"\\n");
-            buffer.append("Name: "+res.getString(1)+"\\n\\n");
+        StringBuilder buffer = new StringBuilder();
+        while (res.moveToNext())
+        {
+            buffer.append("Roll : "+res.getString(0)+"\n");
+            buffer.append("Name : "+res.getString(1)+"\n");
         }
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(DatabaseDemo.this);
         builder.setCancelable(true);
-        builder.setTitle("Student Data");
+        builder.setTitle("Student Entries");
         builder.setMessage(buffer.toString());
         builder.show();
     }
@@ -1543,49 +1553,48 @@ public class DatabaseDemo extends AppCompatActivity {
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:layout_marginTop="100dp"
+    android:gravity="center"
     tools:context=".DatabaseDemo">
-    
+
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:hint="Enter Roll Number"
-        android:layout_marginBottom="10dp"
-        android:id="@+id/rno"/>
-    
+        android:layout_height="wrap_content"
+        android:hint="Roll No"
+        android:id="@+id/r"/>
+
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:hint="Enter Student Name"
-        android:layout_marginBottom="10dp"
-        android:id="@+id/sname"/>
+        android:layout_height="wrap_content"
+        android:hint="Name"
+        android:id="@+id/n"/>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Insert"
-        android:layout_marginBottom="10dp"
         android:onClick="insertData"/>
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Update"
-        android:layout_marginBottom="10dp"
-        android:onClick="updateData"/>
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Delete"
-        android:layout_marginBottom="10dp"
         android:onClick="deleteData"/>
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="View"
-        android:onClick="viewData"/>
+        android:text="Update"
+        android:onClick="updateData"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Disply"
+        android:onClick="displayData"/>
+
 </LinearLayout>`,
         "DBHelper": `import android.content.ContentValues;
 import android.content.Context;
@@ -1593,48 +1602,47 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-public class DBHelper extends SQLiteOpenHelper {
-
-    public DBHelper (Context context){
-        super(context, "StudentDatabase.db", null, 1);
+public class DBHelper extends SQLiteOpenHelper
+{
+    public DBHelper(Context context)
+    {
+        super(context,"MyDatabase.db",null,1);
     }
-
-    public void onCreate(SQLiteDatabase Db){
-        Db.execSQL("CREATE TABLE Students(Roll TEXT PRIMARY KEY, Name TEXT)");
+    @Override
+    public void onCreate(SQLiteDatabase DB)
+    {
+        DB.execSQL("create Table Stud(Roll Text primary Key,Name TEXT)");
     }
-
-    public void onUpgrade (SQLiteDatabase Db, int i,int i1){
-        Db.execSQL("DROP TABLE IF EXISTS Students");
+    @Override
+    public void onUpgrade(SQLiteDatabase DB, int i, int i1)
+    {
+        DB.execSQL("drop Table if exists StudentDeatils");
     }
-
-    public void insertStudentData(String rno, String sname){
-        SQLiteDatabase Db;
-        ContentValues cv = new ContentValues();
-        Db=this.getWritableDatabase();
-        cv.put("Roll", rno);
-        cv.put("Name", sname);
-        Db.insert("Students", null, cv);
+    public void insertStudentData(String sRoll, String sName)
+    {
+        SQLiteDatabase DB = this.getWritableDatabase();
+        ContentValues cv= new ContentValues();
+        cv.put("Roll",sRoll);
+        cv.put("Name",sName);
+        DB.insert("Stud",null,cv);
     }
-
-    public void updateStudentData(String rno, String sname){
-        SQLiteDatabase Db;
-        ContentValues cv = new ContentValues();
-        Db=this.getWritableDatabase();
-        cv.put("Roll", rno);
-        cv.put("Name", sname);
-        Db.update("Students", cv, "Roll=?", new String[]{rno});
+    public void deleteStudentData(String roll)
+    {
+        SQLiteDatabase DB = this.getWritableDatabase();
+        DB.delete("Stud", "Roll=?",new String[]{roll});
     }
-
-    public void deleteStudentData(String rno){
-        SQLiteDatabase Db;
-        Db=this.getWritableDatabase();
-        Db.delete("Students", "Roll=?", new String[]{rno});
+    public void updateStudentData(String sRoll, String s_name)
+    {
+        SQLiteDatabase DB = this.getWritableDatabase();
+        ContentValues cv= new ContentValues();
+        cv.put("Roll",sRoll);
+        cv.put("Name",s_name);
+        DB.update("Stud", cv, "Roll=?", new String[]{sRoll});
     }
-
-    public Cursor getStudentData(){
-        SQLiteDatabase Db;
-        Db=this.getWritableDatabase();
-        Cursor c = Db.rawQuery("SELECT * FROM Students", null);
+    public Cursor getStudentData()
+    {
+        SQLiteDatabase DB = this.getWritableDatabase();
+        Cursor c =DB.rawQuery("Select * from Stud ",null);
         return c;
     }
 }`
